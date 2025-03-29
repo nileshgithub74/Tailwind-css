@@ -31,7 +31,6 @@
     --color-lime-500: oklch(0.768 0.233 130.85);
     --color-lime-600: oklch(0.648 0.2 131.684);
     --color-green-200: oklch(0.925 0.084 155.995);
-    --color-green-300: oklch(0.871 0.15 154.449);
     --color-green-400: oklch(0.792 0.209 151.711);
     --color-green-500: oklch(0.723 0.219 149.579);
     --color-green-600: oklch(0.627 0.194 149.214);
@@ -41,14 +40,15 @@
     --color-teal-400: oklch(0.777 0.152 181.912);
     --color-teal-500: oklch(0.704 0.14 182.503);
     --color-teal-600: oklch(0.6 0.118 184.704);
-    --color-sky-700: oklch(0.5 0.134 242.749);
     --color-blue-200: oklch(0.882 0.059 254.128);
     --color-blue-300: oklch(0.809 0.105 251.813);
     --color-blue-400: oklch(0.707 0.165 254.624);
     --color-blue-500: oklch(0.623 0.214 259.815);
     --color-indigo-200: oklch(0.87 0.065 274.039);
     --color-indigo-300: oklch(0.785 0.115 274.713);
+    --color-violet-200: oklch(0.894 0.057 293.283);
     --color-violet-400: oklch(0.702 0.183 293.541);
+    --color-violet-500: oklch(0.606 0.25 292.717);
     --color-purple-400: oklch(0.714 0.203 305.504);
     --color-pink-600: oklch(0.592 0.249 0.584);
     --color-pink-700: oklch(0.525 0.223 3.958);
@@ -64,12 +64,11 @@
     --color-rose-900: oklch(0.41 0.159 10.272);
     --color-rose-950: oklch(0.271 0.105 12.094);
     --color-slate-400: oklch(0.704 0.04 256.788);
+    --color-gray-200: oklch(0.928 0.006 264.531);
     --color-gray-700: oklch(0.373 0.034 259.733);
     --color-white: #fff;
     --spacing: 0.25rem;
-    --container-sm: 24rem;
     --container-md: 28rem;
-    --container-lg: 32rem;
     --container-6xl: 72rem;
     --container-7xl: 80rem;
     --text-xs: 0.75rem;
@@ -98,7 +97,6 @@
     --tracking-wide: 0.025em;
     --tracking-widest: 0.1em;
     --radius-sm: 0.25rem;
-    --radius-md: 0.375rem;
     --ease-in: cubic-bezier(0.4, 0, 1, 1);
     --ease-out: cubic-bezier(0, 0, 0.2, 1);
     --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
@@ -106,7 +104,6 @@
     --blur-md: 12px;
     --blur-lg: 16px;
     --blur-xl: 24px;
-    --blur-3xl: 64px;
     --default-transition-duration: 150ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     --default-font-family: var(--font-sans);
@@ -457,9 +454,6 @@
   .m-\[100px\] {
     margin: 100px;
   }
-  .mx-3 {
-    margin-inline: calc(var(--spacing) * 3);
-  }
   .mx-4 {
     margin-inline: calc(var(--spacing) * 4);
   }
@@ -592,12 +586,30 @@
   .aspect-square {
     aspect-ratio: 1 / 1;
   }
+  .size-10 {
+    width: calc(var(--spacing) * 10);
+    height: calc(var(--spacing) * 10);
+  }
+  .size-20 {
+    width: calc(var(--spacing) * 20);
+    height: calc(var(--spacing) * 20);
+  }
   .size-48 {
     width: calc(var(--spacing) * 48);
     height: calc(var(--spacing) * 48);
   }
+  .size-full {
+    width: 100%;
+    height: 100%;
+  }
   .h-7 {
     height: calc(var(--spacing) * 7);
+  }
+  .h-10 {
+    height: calc(var(--spacing) * 10);
+  }
+  .h-20 {
+    height: calc(var(--spacing) * 20);
   }
   .h-30 {
     height: calc(var(--spacing) * 30);
@@ -661,6 +673,9 @@
   }
   .w-9 {
     width: calc(var(--spacing) * 9);
+  }
+  .w-20 {
+    width: calc(var(--spacing) * 20);
   }
   .w-32 {
     width: calc(var(--spacing) * 32);
@@ -883,23 +898,11 @@
   .columns-2 {
     columns: 2;
   }
-  .columns-3 {
-    columns: 3;
-  }
-  .columns-4 {
-    columns: 4;
-  }
   .columns-auto {
     columns: auto;
   }
-  .columns-lg {
-    columns: var(--container-lg);
-  }
   .columns-md {
     columns: var(--container-md);
-  }
-  .columns-sm {
-    columns: var(--container-sm);
   }
   .auto-cols-auto {
     grid-auto-columns: auto;
@@ -1099,9 +1102,6 @@
   .gap-0 {
     gap: calc(var(--spacing) * 0);
   }
-  .gap-1 {
-    gap: calc(var(--spacing) * 1);
-  }
   .space-y-reverse {
     :where(& > :not(:last-child)) {
       --tw-space-y-reverse: 1;
@@ -1202,9 +1202,6 @@
   }
   .rounded {
     border-radius: 0.25rem;
-  }
-  .rounded-md {
-    border-radius: var(--radius-md);
   }
   .rounded-sm {
     border-radius: var(--radius-sm);
@@ -1334,6 +1331,12 @@
   .border-blue-400 {
     border-color: var(--color-blue-400);
   }
+  .border-red-500 {
+    border-color: var(--color-red-500);
+  }
+  .border-teal-300 {
+    border-color: var(--color-teal-300);
+  }
   .bg-\(--my_variable\) {
     background-color: var(--my_variable);
   }
@@ -1358,11 +1361,14 @@
   .bg-blue-300 {
     background-color: var(--color-blue-300);
   }
+  .bg-blue-500 {
+    background-color: var(--color-blue-500);
+  }
+  .bg-gray-200 {
+    background-color: var(--color-gray-200);
+  }
   .bg-green-200 {
     background-color: var(--color-green-200);
-  }
-  .bg-green-300 {
-    background-color: var(--color-green-300);
   }
   .bg-green-400 {
     background-color: var(--color-green-400);
@@ -1474,6 +1480,12 @@
   }
   .bg-teal-600 {
     background-color: var(--color-teal-600);
+  }
+  .bg-violet-200 {
+    background-color: var(--color-violet-200);
+  }
+  .bg-violet-500 {
+    background-color: var(--color-violet-500);
   }
   .bg-yellow-50 {
     background-color: var(--color-yellow-50);
@@ -1927,17 +1939,8 @@
   .text-red-600 {
     color: var(--color-red-600);
   }
-  .text-rose-300 {
-    color: var(--color-rose-300);
-  }
   .text-rose-500 {
     color: var(--color-rose-500);
-  }
-  .text-rose-800 {
-    color: var(--color-rose-800);
-  }
-  .text-sky-700 {
-    color: var(--color-sky-700);
   }
   .text-white {
     color: var(--color-white);
@@ -2155,10 +2158,6 @@
     --tw-blur: blur(8px);
     filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
   }
-  .blur-3xl {
-    --tw-blur: blur(var(--blur-3xl));
-    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
-  }
   .blur-lg {
     --tw-blur: blur(var(--blur-lg));
     filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
@@ -2183,16 +2182,8 @@
     --tw-brightness: brightness(90%);
     filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
   }
-  .brightness-95 {
-    --tw-brightness: brightness(95%);
-    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
-  }
   .brightness-120 {
     --tw-brightness: brightness(120%);
-    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
-  }
-  .brightness-200 {
-    --tw-brightness: brightness(200%);
     filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
   }
   .contrast-100 {
@@ -2462,18 +2453,6 @@
       }
     }
   }
-  .hover\:text-rose-700 {
-    &:hover {
-      @media (hover: hover) {
-        color: var(--color-rose-700);
-      }
-    }
-  }
-  .focus\:bg-violet-400 {
-    &:focus {
-      background-color: var(--color-violet-400);
-    }
-  }
   .focus\:bg-yellow-400 {
     &:focus {
       background-color: var(--color-yellow-400);
@@ -2482,11 +2461,6 @@
   .active\:bg-green-400 {
     &:active {
       background-color: var(--color-green-400);
-    }
-  }
-  .active\:bg-yellow-400 {
-    &:active {
-      background-color: var(--color-yellow-400);
     }
   }
   .sm\:columns-2 {
@@ -2504,24 +2478,9 @@
       columns: 3;
     }
   }
-  .md\:columns-4 {
-    @media (width >= 48rem) {
-      columns: 4;
-    }
-  }
   .lg\:columns-4 {
     @media (width >= 64rem) {
       columns: 4;
-    }
-  }
-  .lg\:bg-rose-300 {
-    @media (width >= 64rem) {
-      background-color: var(--color-rose-300);
-    }
-  }
-  .lg\:bg-rose-600 {
-    @media (width >= 64rem) {
-      background-color: var(--color-rose-600);
     }
   }
 }
